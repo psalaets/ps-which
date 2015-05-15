@@ -23,6 +23,8 @@
     recordNames('factory', index.factories);
     recordNames('value', index.values);
     recordNames('constant', index.constants);
+    recordNames('service', index.services);
+    recordNames('directive', index.directives);
 
     function recordNames(methodName, record) {
       var orig = module[methodName];
@@ -38,9 +40,9 @@
     return {
       factories: [],
       values: [],
-      directives: [],
-      services: [],
       constants: [],
+      services: [],
+      directives: [],
       providers: []
     };
   }
