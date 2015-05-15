@@ -1,0 +1,20 @@
+{
+  "name": "ps-which",
+  "version": "0.0.0",
+  "homepage": "https://github.com/psalaets/ps-which",
+  "authors": [
+    "Paul Salaets <psalaets@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {},
+  "dependencies": {
+    "angular": "^1.0.8"
+  }
+}
