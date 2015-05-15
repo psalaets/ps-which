@@ -1,8 +1,6 @@
 describe('after hooking into Angular', function() {
   beforeAll(function() {
     psWhich(angular);
-    angular.module('moduleA', []);
-    angular.module('moduleB', []);
   });
 
   it('has undefined info for modules that haven\t been defined', function() {
@@ -10,6 +8,8 @@ describe('after hooking into Angular', function() {
   });
 
   it('has empty arrays for modules that don\'t have anything', function() {
+    angular.module('moduleA', []);
+
     expect(psWhich.info.moduleA.factories.length).toBe(0);
     expect(psWhich.info.moduleA.values.length).toBe(0);
     expect(psWhich.info.moduleA.constants.length).toBe(0);
@@ -19,72 +19,90 @@ describe('after hooking into Angular', function() {
   });
 
   it('records factories added to Angular modules', function() {
+    angular.module('moduleB', []);
+    angular.module('moduleC', []);
+
     function myFactory() { return {}; }
 
-    angular.module('moduleA').factory('f1', myFactory);
-    angular.module('moduleA').factory('f2', myFactory);
+    angular.module('moduleB').factory('f1', myFactory);
+    angular.module('moduleB').factory('f2', myFactory);
 
-    angular.module('moduleB').factory('f3', myFactory);
+    angular.module('moduleC').factory('f3', myFactory);
 
-    expect(psWhich.info.moduleA.factories).toEqual(['f1', 'f2']);
-    expect(psWhich.info.moduleB.factories).toEqual(['f3']);
+    expect(psWhich.info.moduleB.factories).toEqual(['f1', 'f2']);
+    expect(psWhich.info.moduleC.factories).toEqual(['f3']);
   });
 
   it('records values added to Angular modules', function() {
-    angular.module('moduleA').value('v1', 1);
-    angular.module('moduleA').value('v2', 2);
+    angular.module('moduleD', []);
+    angular.module('moduleE', []);
 
-    angular.module('moduleB').value('v3', 3);
+    angular.module('moduleD').value('v1', 1);
+    angular.module('moduleD').value('v2', 2);
 
-    expect(psWhich.info.moduleA.values).toEqual(['v1', 'v2']);
-    expect(psWhich.info.moduleB.values).toEqual(['v3']);
+    angular.module('moduleE').value('v3', 3);
+
+    expect(psWhich.info.moduleD.values).toEqual(['v1', 'v2']);
+    expect(psWhich.info.moduleE.values).toEqual(['v3']);
   });
 
   it('records constants added to Angular modules', function() {
-    angular.module('moduleA').constant('c1', 1);
-    angular.module('moduleA').constant('c2', 2);
+    angular.module('moduleF', []);
+    angular.module('moduleG', []);
 
-    angular.module('moduleB').constant('c3', 3);
+    angular.module('moduleF').constant('c1', 1);
+    angular.module('moduleF').constant('c2', 2);
 
-    expect(psWhich.info.moduleA.constants).toEqual(['c1', 'c2']);
-    expect(psWhich.info.moduleB.constants).toEqual(['c3']);
+    angular.module('moduleG').constant('c3', 3);
+
+    expect(psWhich.info.moduleF.constants).toEqual(['c1', 'c2']);
+    expect(psWhich.info.moduleG.constants).toEqual(['c3']);
   });
 
   it('records services added to Angular modules', function() {
+    angular.module('moduleH', []);
+    angular.module('moduleI', []);
+
     function MyService() {}
 
-    angular.module('moduleA').service('s1', MyService);
-    angular.module('moduleA').service('s2', MyService);
+    angular.module('moduleH').service('s1', MyService);
+    angular.module('moduleH').service('s2', MyService);
 
-    angular.module('moduleB').service('s3', MyService);
+    angular.module('moduleI').service('s3', MyService);
 
-    expect(psWhich.info.moduleA.services).toEqual(['s1', 's2']);
-    expect(psWhich.info.moduleB.services).toEqual(['s3']);
+    expect(psWhich.info.moduleH.services).toEqual(['s1', 's2']);
+    expect(psWhich.info.moduleI.services).toEqual(['s3']);
   });
 
   it('records directives added to Angular modules', function() {
+    angular.module('moduleJ', []);
+    angular.module('moduleK', []);
+
     function myDirective() { return {}; }
 
-    angular.module('moduleA').directive('d1', myDirective);
-    angular.module('moduleA').directive('d2', myDirective);
+    angular.module('moduleJ').directive('d1', myDirective);
+    angular.module('moduleJ').directive('d2', myDirective);
 
-    angular.module('moduleB').directive('d3', myDirective);
+    angular.module('moduleK').directive('d3', myDirective);
 
-    expect(psWhich.info.moduleA.directives).toEqual(['d1', 'd2']);
-    expect(psWhich.info.moduleB.directives).toEqual(['d3']);
+    expect(psWhich.info.moduleJ.directives).toEqual(['d1', 'd2']);
+    expect(psWhich.info.moduleK.directives).toEqual(['d3']);
   });
 
   it('records providers added to Angular modules', function() {
+    angular.module('moduleL', []);
+    angular.module('moduleM', []);
+
     function myProvider() {
       this.$get = function() { return 2; };
     }
 
-    angular.module('moduleA').provider('p1', myProvider);
-    angular.module('moduleA').provider('p2', myProvider);
+    angular.module('moduleL').provider('p1', myProvider);
+    angular.module('moduleL').provider('p2', myProvider);
 
-    angular.module('moduleB').provider('p3', myProvider);
+    angular.module('moduleM').provider('p3', myProvider);
 
-    expect(psWhich.info.moduleA.providers).toEqual(['p1', 'p2']);
-    expect(psWhich.info.moduleB.providers).toEqual(['p3']);
+    expect(psWhich.info.moduleL.providers).toEqual(['p1', 'p2']);
+    expect(psWhich.info.moduleM.providers).toEqual(['p3']);
   });
 });
