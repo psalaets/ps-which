@@ -8,7 +8,7 @@ describe('after hooking into Angular', function() {
       expect(psWhich.info.moduleX).toBeUndefined();
     });
 
-    it('has empty arrays for modules that have been defined but don\'t have anything', function() {
+    it('has empty arrays for modules that have been defined but don\'t have any Angular types', function() {
       angular.module('moduleA', []);
 
       expect(psWhich.info.moduleA.factories.length).toBe(0);
