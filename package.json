@@ -4,15 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js"
+    "test": "karma start karma.conf.js && karma start karma-ask.conf.js",
+    "prebuild": "rm -rf build && mkdir build",
+    "build": "browserify index.js -s psWhich -o build/ps-which.js"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^10.2.0",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.12",
-    "karma-firefox-launcher": "^0.1.6",
     "karma-jasmine": "^0.3.5"
   }
 }
