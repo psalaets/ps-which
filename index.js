@@ -43,12 +43,12 @@ psWhich.report = function report() {
 
   Object.keys(info).sort().forEach(function(moduleName) {
     log(moduleName);
-    logSection('factory', info[moduleName].factories);
-    logSection('value', info[moduleName].values);
-    logSection('constant', info[moduleName].constants);
-    logSection('service', info[moduleName].services);
+    logSection('factory',   info[moduleName].factories);
+    logSection('value',     info[moduleName].values);
+    logSection('constant',  info[moduleName].constants);
+    logSection('service',   info[moduleName].services);
     logSection('directive', info[moduleName].directives);
-    logSection('provider', info[moduleName].providers);
+    logSection('provider',  info[moduleName].providers);
     log();
   });
 
