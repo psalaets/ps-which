@@ -19,7 +19,7 @@ function psWhich(angular) {
 var info = psWhich.info = {};
 
 function hookIntoModule(moduleName, module) {
-  var index = info[moduleName] = createModuleIndex();
+  var index = info[moduleName] = new ModuleContents();
 
   recordNames('factory',    index.factories);
   recordNames('value',      index.values);
@@ -36,10 +36,6 @@ function hookIntoModule(moduleName, module) {
       return orig.apply(module, arguments);
     };
   }
-}
-
-function createModuleIndex() {
-  return new ModuleContents();
 }
 
 psWhich.report = function report() {
