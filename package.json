@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js && karma start karma-ask.conf.js",
+    "test": "npm run test-info && npm run test-ask",
+    "test-info": "karma start karma.conf.js",
+    "test-ask": "karma start karma-ask.conf.js",
     "prebuild": "rm -rf build && mkdir build",
     "build": "browserify index.js -s psWhich -o build/ps-which.js"
   },
