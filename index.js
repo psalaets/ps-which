@@ -2,6 +2,11 @@ var ModuleContents = require('./lib/module-contents');
 
 module.exports = psWhich;
 
+/**
+* Adds hooks to Angular.
+*
+* @param angular - main angular object
+*/
 function psWhich(angular) {
   var orig = angular.module;
 
@@ -18,6 +23,12 @@ function psWhich(angular) {
 
 var info = psWhich.info = {};
 
+/**
+* Add hooks to an Angular module.
+*
+* @param moduleName - name of the module
+* @param module     - the module to hook in to
+*/
 function hookIntoModule(moduleName, module) {
   var index = info[moduleName] = new ModuleContents();
 
@@ -38,6 +49,9 @@ function hookIntoModule(moduleName, module) {
   }
 }
 
+/**
+* Print all info gathered thus far to console in a markdown-looking format.
+*/
 psWhich.report = function report() {
   var log = console.log.bind(console);
 
@@ -60,6 +74,12 @@ psWhich.report = function report() {
   }
 }
 
+/**
+* See what exists for a given name.
+*
+* @param name - name to look for
+* @return message about what was found
+*/
 psWhich.ask = function ask(name) {
   var finds = [];
   var modules = Object.keys(info).sort();
