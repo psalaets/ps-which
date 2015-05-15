@@ -30,4 +30,14 @@ describe('after hooking into Angular', function() {
     expect(psWhich.info.moduleA.values).toEqual(['v1', 'v2']);
     expect(psWhich.info.moduleB.values).toEqual(['v3']);
   });
+
+  it('records constants added to Angular modules', function() {
+    angular.module('moduleA').constant('c1', 1);
+    angular.module('moduleA').constant('c2', 2);
+
+    angular.module('moduleB').constant('c3', 3);
+
+    expect(psWhich.info.moduleA.constants).toEqual(['c1', 'c2']);
+    expect(psWhich.info.moduleB.constants).toEqual(['c3']);
+  });
 });

@@ -20,14 +20,15 @@
   function hookIntoModule(moduleName, module) {
     var index = info[moduleName] = createModuleIndex();
 
-    recordCalls('factory', 'factories');
-    recordCalls('value', 'values');
+    recordNames('factory', index.factories);
+    recordNames('value', index.values);
+    recordNames('constant', index.constants);
 
-    function recordCalls(methodName, indexCollectionName) {
+    function recordNames(methodName, record) {
       var orig = module[methodName];
 
       module[methodName] = function(name) {
-        index[indexCollectionName].push(name);
+        record.push(name);
         return orig.apply(module, arguments);
       };
     }
