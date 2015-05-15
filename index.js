@@ -48,7 +48,7 @@
     };
   }
 
-  psWhich.report = function() {
+  psWhich.report = function report() {
     var log = console.log.bind(console);
 
     Object.keys(info).sort().forEach(function(moduleName) {
@@ -69,4 +69,22 @@
       });
     }
   }
+
+  psWhich.ask = function ask(name) {
+    var finds = [];
+    var modules = Object.keys(info).sort();
+
+    modules.forEach(function(module) {
+      var names = info[module];
+      if (names.values.indexOf(name) !== -1) {
+        finds.push('value in ' + module);
+      }
+    });
+
+    if (finds.length > 0) {
+      return finds.join(', ');
+    } else {
+      return 'nothing found';
+    }
+  };
 })(this);
