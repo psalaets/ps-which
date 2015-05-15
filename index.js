@@ -20,12 +20,12 @@
   function hookIntoModule(moduleName, module) {
     var index = info[moduleName] = createModuleIndex();
 
-    recordNames('factory', index.factories);
-    recordNames('value', index.values);
-    recordNames('constant', index.constants);
-    recordNames('service', index.services);
-    recordNames('directive', index.directives);
-    recordNames('provider', index.providers);
+    recordNames('factory',    index.factories);
+    recordNames('value',      index.values);
+    recordNames('constant',   index.constants);
+    recordNames('service',    index.services);
+    recordNames('directive',  index.directives);
+    recordNames('provider',   index.providers);
 
     function recordNames(methodName, record) {
       var orig = module[methodName];
