@@ -1,13 +1,11 @@
 ;(function(global) {
   global.psWhich = psWhich;
 
-  var info = psWhich.info = {};
-
   function psWhich(angular) {
-    var origModule = angular.module;
+    var orig = angular.module;
 
     angular.module = function moduleWrapper(moduleName, requires) {
-      var module = origModule.apply(angular, arguments);
+      var module = orig.apply(angular, arguments);
 
       if (requires) {
         hookIntoModule(moduleName, module);
@@ -16,6 +14,8 @@
       return module;
     };
   }
+
+  var info = psWhich.info = {};
 
   function hookIntoModule(moduleName, module) {
     var index = info[moduleName] = createModuleIndex();
