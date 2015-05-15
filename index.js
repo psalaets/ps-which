@@ -42,7 +42,7 @@ psWhich.report = function report() {
   var log = console.log.bind(console);
 
   Object.keys(info).sort().forEach(function(moduleName) {
-    log(moduleName);
+    log('# ' + moduleName);
     logSection('factory',   info[moduleName].factories);
     logSection('value',     info[moduleName].values);
     logSection('constant',  info[moduleName].constants);
@@ -53,9 +53,9 @@ psWhich.report = function report() {
   });
 
   function logSection(sectionName, names) {
-    log('  ' + sectionName + ':');
+    log('## ' + sectionName);
     names.forEach(function(name) {
-      log('    - ' + name);
+      log('- ' + name);
     });
   }
 }
@@ -75,6 +75,6 @@ psWhich.ask = function ask(name) {
   if (finds.length > 0) {
     return finds.join(', ');
   } else {
-    return 'nothing found';
+    return 'not found';
   }
 };

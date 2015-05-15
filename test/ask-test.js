@@ -6,7 +6,7 @@ describe('psWhich.ask(name)', function () {
   it('answers for non-existing type', function() {
     var answer = psWhich.ask('_does_not_exist_');
 
-    expect(answer).toBe('nothing found');
+    expect(answer).toBe('not found');
   });
 
   it('answers for existing value', function() {
