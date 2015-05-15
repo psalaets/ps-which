@@ -1,7 +1,14 @@
 {
   "name": "ps-which",
-  "version": "0.0.0",
+  "description": "Find out what's in an Angular 1 app",
+  "version": "1.0.0",
+  "main": "build/ps-which.js",
+  "keywords": ["angular", "refactor", "tool"],
   "homepage": "https://github.com/psalaets/ps-which",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psalaets/ps-which.git"
+  },
   "authors": [
     "Paul Salaets <psalaets@gmail.com>"
   ],
