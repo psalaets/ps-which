@@ -7,13 +7,13 @@
     var origModule = angular.module;
 
     angular.module = function moduleWrapper(moduleName, requires) {
-      var result = origModule.apply(angular, arguments);
+      var module = origModule.apply(angular, arguments);
 
       if (requires) {
-        hookIntoModule(moduleName, result);
+        hookIntoModule(moduleName, module);
       }
 
-      return result;
+      return module;
     };
   }
 
