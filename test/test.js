@@ -73,4 +73,18 @@ describe('after hooking into Angular', function() {
     expect(psWhich.info.moduleA.directives).toEqual(['d1', 'd2']);
     expect(psWhich.info.moduleB.directives).toEqual(['d3']);
   });
+
+  it('records providers added to Angular modules', function() {
+    function myProvider() {
+      this.$get = function() { return 2; };
+    }
+
+    angular.module('moduleA').provider('p1', myProvider);
+    angular.module('moduleA').provider('p2', myProvider);
+
+    angular.module('moduleB').provider('p3', myProvider);
+
+    expect(psWhich.info.moduleA.providers).toEqual(['p1', 'p2']);
+    expect(psWhich.info.moduleB.providers).toEqual(['p3']);
+  });
 });

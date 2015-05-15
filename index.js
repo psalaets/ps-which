@@ -25,6 +25,7 @@
     recordNames('constant', index.constants);
     recordNames('service', index.services);
     recordNames('directive', index.directives);
+    recordNames('provider', index.providers);
 
     function recordNames(methodName, record) {
       var orig = module[methodName];
