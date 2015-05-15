@@ -27,11 +27,11 @@
     recordNames('directive',  index.directives);
     recordNames('provider',   index.providers);
 
-    function recordNames(methodName, record) {
+    function recordNames(methodName, names) {
       var orig = module[methodName];
 
       module[methodName] = function(name) {
-        record.push(name);
+        names.push(name);
         return orig.apply(module, arguments);
       };
     }
