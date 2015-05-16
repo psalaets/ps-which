@@ -6,6 +6,10 @@ Find out what's in an Angular 1 app
 
 `bower install ps-which -D`
 
+or
+
+`npm install ps-which -D`
+
 ## Usage
 
 ### 1. Initialize psWhich right after Angular

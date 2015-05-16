@@ -1,7 +1,7 @@
 {
   "name": "ps-which",
-  "version": "1.0.0",
   "description": "Find out what's in an Angular 1 app",
+  "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf build && mkdir build",
