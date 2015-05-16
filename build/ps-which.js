@@ -145,7 +145,7 @@ ModuleContents.prototype = {
     });
 
     this.directives.filter(function(current) {
-      return current === name;
+      return current === name || camelToDashed(current) === name;
     }).forEach(function() {
       types.push('directive');
     });
@@ -159,6 +159,12 @@ ModuleContents.prototype = {
     return types;
   }
 };
+
+function camelToDashed(camelCase) {
+  return camelCase.replace(/[A-Z]/g, function(match) {
+    return '-' + match.toLowerCase();
+  });
+}
 },{}]},{},[1])
 (1)
 });

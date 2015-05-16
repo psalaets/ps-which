@@ -89,4 +89,14 @@ describe('psWhich.ask(name)', function () {
 
     expect(answer).toBe('value in moduleI, constant in moduleJ');
   });
+
+  it('answers for existing directive in dashed format', function() {
+    angular.module('moduleK', []);
+
+    angular.module('moduleK').directive('myDirective', function() { return {}; });
+
+    var answer = psWhich.ask('my-directive');
+
+    expect(answer).toBe('directive in moduleK');
+  });
 });

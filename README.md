@@ -39,9 +39,18 @@ require('ps-which');
 
 In dev console:
 
-#### psWhich.ask('name')
+#### psWhich.ask(name)
 
-Find out what name is and where it comes from.
+Find out what `name` is and where it comes from.
+
+`name` (string) should be the name of a
+
+- value
+- constant
+- factory
+- service
+- directive (camelCasedName or dashed-name formats accepted)
+- provider
 
 #### psWhich.report()
 
