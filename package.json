@@ -4,11 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rm -rf build && mkdir build",
+    "build": "browserify index.js -s psWhich -o build/ps-which.js",
+    "pretest": "npm run build",
     "test": "npm run test-info && npm run test-ask",
     "test-info": "karma start karma-info.conf.js",
-    "test-ask": "karma start karma-ask.conf.js",
-    "prebuild": "rm -rf build && mkdir build",
-    "build": "browserify index.js -s psWhich -o build/ps-which.js"
+    "test-ask": "karma start karma-ask.conf.js"
   },
   "author": "",
   "license": "MIT",

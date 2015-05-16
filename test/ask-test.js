@@ -1,8 +1,4 @@
 describe('psWhich.ask(name)', function () {
-  beforeAll(function() {
-    psWhich(angular);
-  });
-
   it('answers for non-existing type', function() {
     var answer = psWhich.ask('_does_not_exist_');
 

@@ -2,6 +2,11 @@ var ModuleContents = require('./lib/module-contents');
 
 module.exports = psWhich;
 
+// automatically hook into angular if it's available as a global
+if (typeof angular != 'undefined') {
+  psWhich(angular);
+}
+
 /**
 * Adds hooks to Angular.
 *
