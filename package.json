@@ -1,7 +1,7 @@
 {
   "name": "ps-which",
   "version": "1.0.0",
-  "description": "",
+  "description": "Find out what's in an Angular 1 app",
   "main": "index.js",
   "scripts": {
     "prebuild": "rm -rf build && mkdir build",
@@ -11,8 +11,14 @@
     "test-info": "karma start karma-info.conf.js",
     "test-ask": "karma start karma-ask.conf.js"
   },
-  "author": "",
+  "author": "Paul Salaets <psalaets@gmail.com>",
+  "keywords": ["angular", "refactor", "tool"],
   "license": "MIT",
+  "homepage": "https://github.com/psalaets/ps-which",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psalaets/ps-which.git"
+  },
   "devDependencies": {
     "browserify": "^10.2.0",
     "jasmine-core": "^2.3.4",
