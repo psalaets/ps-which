@@ -12,7 +12,11 @@
     "test-ask": "karma start karma-ask.conf.js"
   },
   "author": "Paul Salaets <psalaets@gmail.com>",
-  "keywords": ["angular", "refactor", "tool"],
+  "keywords": [
+    "angular",
+    "refactor",
+    "tool"
+  ],
   "license": "MIT",
   "homepage": "https://github.com/psalaets/ps-which",
   "repository": {
@@ -21,6 +25,7 @@
   },
   "devDependencies": {
     "browserify": "^10.2.0",
+    "extend": "^2.0.1",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.12",
