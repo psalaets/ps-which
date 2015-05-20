@@ -12,18 +12,16 @@ or
 
 ## Usage
 
-### 1. Initialize psWhich right after Angular
+### 1. Initialize ps-which right after Angular
 
 #### bower users
 
 Include ps-which before loading any other code that uses Angular.
 
 ```html
-<script src="angular.js"></script>
-<script src="ps-which.js"></script>
-
-<script src="third-party-module.js"></script>
-<script src="app.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/ps-which/build/ps-which.js"></script>
+<!-- Load other Angular libs and your app code here -->
 ```
 
 #### CommonJS users
