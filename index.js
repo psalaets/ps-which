@@ -72,6 +72,8 @@ psWhich.report = function report() {
   });
 
   function logSection(sectionName, names) {
+    if (names.length == 0) return;
+
     log('## ' + sectionName);
     names.forEach(function(name) {
       log('- ' + name);
