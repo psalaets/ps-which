@@ -1,4 +1,4 @@
-describe('psWhich.ask(name)', function () {
+describe('psWhich.ask()', function () {
   it('answers for non-existing type', function() {
     var answer = psWhich.ask('_does_not_exist_');
 
