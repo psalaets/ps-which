@@ -41,4 +41,21 @@ describe('psWhich.report()', function() {
       ''
     ]);
   });
+
+  it('accept RegExp to filter modules in output', function() {
+    angular.module('moduleC', []);
+    angular.module('moduleC').value('v2', 3);
+
+    angular.module('moduleD', []);
+    angular.module('moduleD').constant('c2', 3);
+
+    psWhich.report(/moduleC/);
+
+    expect(buffer).toEqual([
+      '# moduleC',
+      '## value',
+      '- v2',
+      '',
+    ]);
+  });
 });

@@ -57,10 +57,17 @@ function hookIntoModule(moduleName, module) {
 /**
 * Print all info gathered thus far to console in a markdown-looking format.
 */
-psWhich.report = function report() {
+psWhich.report = function report(filter) {
   var log = console.log.bind(console);
 
-  Object.keys(psWhich.info).sort().forEach(function(moduleName) {
+  function filterFn(moduleName) {
+    if (!filter) {
+      return true;
+    }
+    return filter.test(moduleName);
+  }
+
+  Object.keys(psWhich.info).sort().filter(filterFn).forEach(function(moduleName) {
     var moduleInfo = psWhich.info[moduleName];
 
     log('# ' + moduleName);
