@@ -4,7 +4,11 @@ describe('psWhich.report()', function() {
   beforeAll(function() {
     // replace config.log() for testing purposes
     console.log = function() {
-      buffer.push.apply(buffer, arguments);
+      var args = Array.prototype.slice.apply(arguments);
+      if (args.length == 0) {
+        args.push('');
+      }
+      buffer.push.apply(buffer, args);
     };
   });
 
@@ -19,15 +23,22 @@ describe('psWhich.report()', function() {
     angular.module('moduleB', []);
     angular.module('moduleB').constant('c1', 3);
 
+    angular.module('moduleC', []);
+
     psWhich.report();
 
     expect(buffer).toEqual([
       '# moduleA',
       '## value',
       '- v1',
+      '',
       '# moduleB',
       '## constant',
-      '- c1'
+      '- c1',
+      '',
+      '# moduleC',
+      '(empty)',
+      ''
     ]);
   });
 });

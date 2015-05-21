@@ -60,14 +60,21 @@ function hookIntoModule(moduleName, module) {
 psWhich.report = function report() {
   var log = console.log.bind(console);
 
-  Object.keys(info).sort().forEach(function(moduleName) {
+  Object.keys(psWhich.info).sort().forEach(function(moduleName) {
+    var moduleInfo = psWhich.info[moduleName];
+
     log('# ' + moduleName);
-    logSection('factory',   info[moduleName].factories);
-    logSection('value',     info[moduleName].values);
-    logSection('constant',  info[moduleName].constants);
-    logSection('service',   info[moduleName].services);
-    logSection('directive', info[moduleName].directives);
-    logSection('provider',  info[moduleName].providers);
+
+    if (moduleInfo.hasAny()) {
+      logSection('factory',   info[moduleName].factories);
+      logSection('value',     info[moduleName].values);
+      logSection('constant',  info[moduleName].constants);
+      logSection('service',   info[moduleName].services);
+      logSection('directive', info[moduleName].directives);
+      logSection('provider',  info[moduleName].providers);
+    } else {
+      log('(empty)');
+    }
     log();
   });
 
