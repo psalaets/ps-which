@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0] - 2015-05-20
+### Added
+
+- `psWhich.report()` accepts optional RegExp to filter modules reported
+
+### Changed
+
+- `psWhich.report()` no longer prints a heading for types that are empty
+- `psWhich.report()` prints `(empty)` if module has nothing
+
 ## [1.1.0] - 2015-05-15
 ### Added
 
