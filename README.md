@@ -50,11 +50,11 @@ Find out what `name` is and where it comes from.
 - directive (camelCasedName or dashed-name formats accepted)
 - provider
 
-#### psWhich.report([regexp])
+#### psWhich.report([filter])
 
 Print everything psWhich knows to console.
 
-Optional RegExp can be passed to filter modules by name. Only matching modules will be printed. Defaults to printing all modules.
+filter is an optional RegExp to filter modules by name. Only matching modules will be printed. Defaults to printing all modules.
 
 #### psWhich.info
 
