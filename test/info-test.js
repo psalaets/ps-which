@@ -1,5 +1,5 @@
 describe('psWhich.info', function () {
-  it('doesn\'t have anything for modules that haven\t been defined', function() {
+  it('doesn\'t have anything for modules that haven\'t been defined', function() {
     expect(psWhich.info.moduleX).toBeUndefined();
   });
 
