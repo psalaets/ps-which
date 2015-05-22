@@ -12,7 +12,7 @@ or
 
 ## Usage
 
-### 1. Initialize ps-which right after Angular
+### 1. Load ps-which right after Angular
 
 #### bower users
 
@@ -21,6 +21,7 @@ Include ps-which before loading any other code that uses Angular.
 ```html
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/ps-which/build/ps-which.js"></script>
+
 <!-- Load other Angular libs and your app code here -->
 ```
 
@@ -31,9 +32,13 @@ Before requiring any other Angular-related libs do:
 ```js
 var angular = require('angular');
 require('ps-which');
+
+// code that uses angular here
 ```
 
 ### 2. Load Angular app in browser and open dev console
+
+ps-which is accessed through the `psWhich` global variable.
 
 In dev console:
 
@@ -47,18 +52,18 @@ Find out what `name` is and where it comes from.
 - constant
 - factory
 - service
-- directive (camelCasedName or dashed-name formats accepted)
+- directive (camelCasedName and dashed-name formats accepted)
 - provider
 
 #### psWhich.report([filter])
 
-Print everything psWhich knows to console.
+Print everything ps-which knows to console.
 
 filter is an optional RegExp to filter modules by name. Only matching modules will be printed. Defaults to printing all modules.
 
 #### psWhich.info
 
-psWhich's raw data object.
+ps-which's raw data object.
 
 ## License
 
