@@ -59,7 +59,7 @@ Find out what `name` is and where it comes from.
 
 Print everything ps-which knows to console.
 
-filter is an optional RegExp to filter modules by name. Only matching modules will be printed. Defaults to printing all modules.
+`filter` is an optional RegExp to filter modules by name. Only matching modules will be printed. Defaults to printing all modules.
 
 #### psWhich.info
 
