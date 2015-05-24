@@ -12,7 +12,7 @@ or
 
 ## Usage
 
-### 1. Load ps-which right after Angular
+### 1. Include ps-which
 
 #### bower users
 
