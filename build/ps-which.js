@@ -16,7 +16,7 @@ if (typeof angular != 'undefined') {
 function psWhich(angular) {
   var orig = angular.module;
 
-  angular.module = function moduleWrapper(moduleName, requires) {
+  angular.module = function moduleReplacement(moduleName, requires) {
     var module = orig.apply(angular, arguments);
 
     if (requires) {
