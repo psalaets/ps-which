@@ -16,7 +16,7 @@ or
 
 #### bower users
 
-Include ps-which before loading any other code that uses Angular.
+Load ps-which immediately after loading Angular.
 
 ```html
 <script src="bower_components/angular/angular.js"></script>
@@ -27,7 +27,7 @@ Include ps-which before loading any other code that uses Angular.
 
 #### CommonJS users
 
-Before requiring any other Angular-related libs do:
+Require ps-which immediately after requiring Angular.
 
 ```js
 var angular = require('angular');
