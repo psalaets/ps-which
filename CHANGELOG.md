@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2015-05-25
+### Fixed
+
+- Wasn't recording any info about controllers
+- Wasn't exposing `psWhich` global variable in CommonJS environments
+
 ## [1.2.1] - 2015-05-20
 ### Changed
 
