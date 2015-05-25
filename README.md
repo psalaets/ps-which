@@ -66,6 +66,29 @@ Print everything ps-which knows to console.
 
 ps-which's raw data object.
 
+## Limitations
+
+### Angular built-ins
+
+ps-which does not know about Angular built-ins (ngShow, $http, etc).
+
+### Custom attributes that aren't directives
+
+Given this directive
+
+```js
+angular.module('app').directive('foo', function() {
+  return {
+    restrict: 'A',
+    scope: {
+      fieldName: '@'
+    }
+  };
+});
+```
+
+ps-which knows about `foo` but knows nothing about `field-name`.
+
 ## License
 
 MIT
