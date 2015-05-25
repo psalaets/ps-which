@@ -1,5 +1,82 @@
-!function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.psWhich=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-var ModuleContents = _dereq_('./lib/module-contents');
+(function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.psWhich = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = ModuleContents;
+
+function ModuleContents() {
+  this.values = [];
+  this.constants = [];
+  this.factories = [];
+  this.services = [];
+  this.directives = [];
+  this.providers = [];
+  this.controllers = [];
+}
+
+ModuleContents.prototype = {
+  whatTypes: function(name) {
+    var types = [];
+
+    this.values.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('value');
+    });
+
+    this.constants.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('constant');
+    });
+
+    this.factories.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('factory');
+    });
+
+    this.services.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('service');
+    });
+
+    this.directives.filter(function(current) {
+      return current === name || camelToDashed(current) === name;
+    }).forEach(function() {
+      types.push('directive');
+    });
+
+    this.providers.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('provider');
+    });
+
+    this.controllers.filter(function(current) {
+      return current === name;
+    }).forEach(function() {
+      types.push('controller');
+    });
+
+    return types;
+  },
+  hasAny: function() {
+    return this.values.length +
+      this.constants.length +
+      this.factories.length +
+      this.services.length +
+      this.directives.length +
+      this.providers.length +
+      this.controllers.length > 0;
+  }
+};
+
+function camelToDashed(camelCase) {
+  return camelCase.replace(/[A-Z]/g, function(match) {
+    return '-' + match.toLowerCase();
+  });
+}
+},{}],2:[function(require,module,exports){
+var ModuleContents = require('./lib/module-contents');
 
 module.exports = psWhich;
 
@@ -44,6 +121,7 @@ function hookIntoModule(moduleName, module) {
   recordNames('service',    index.services);
   recordNames('directive',  index.directives);
   recordNames('provider',   index.providers);
+  recordNames('controller', index.controllers);
 
   function recordNames(methodName, names) {
     var orig = module[methodName];
@@ -74,12 +152,13 @@ psWhich.report = function report(filter) {
     log('# ' + moduleName);
 
     if (moduleInfo.hasAny()) {
-      logSection('factory',   info[moduleName].factories);
-      logSection('value',     info[moduleName].values);
-      logSection('constant',  info[moduleName].constants);
-      logSection('service',   info[moduleName].services);
-      logSection('directive', info[moduleName].directives);
-      logSection('provider',  info[moduleName].providers);
+      logSection('factory',     info[moduleName].factories);
+      logSection('value',       info[moduleName].values);
+      logSection('constant',    info[moduleName].constants);
+      logSection('service',     info[moduleName].services);
+      logSection('directive',   info[moduleName].directives);
+      logSection('provider',    info[moduleName].providers);
+      logSection('controller',  info[moduleName].controllers);
     } else {
       log('(empty)');
     }
@@ -120,75 +199,5 @@ psWhich.ask = function ask(name) {
     return 'not found';
   }
 };
-},{"./lib/module-contents":2}],2:[function(_dereq_,module,exports){
-module.exports = ModuleContents;
-
-function ModuleContents() {
-  this.values = [];
-  this.constants = [];
-  this.factories = [];
-  this.services = [];
-  this.directives = [];
-  this.providers = [];
-}
-
-ModuleContents.prototype = {
-  whatTypes: function(name) {
-    var types = [];
-
-    this.values.filter(function(current) {
-      return current === name;
-    }).forEach(function() {
-      types.push('value');
-    });
-
-    this.constants.filter(function(current) {
-      return current === name;
-    }).forEach(function() {
-      types.push('constant');
-    });
-
-    this.factories.filter(function(current) {
-      return current === name;
-    }).forEach(function() {
-      types.push('factory');
-    });
-
-    this.services.filter(function(current) {
-      return current === name;
-    }).forEach(function() {
-      types.push('service');
-    });
-
-    this.directives.filter(function(current) {
-      return current === name || camelToDashed(current) === name;
-    }).forEach(function() {
-      types.push('directive');
-    });
-
-    this.providers.filter(function(current) {
-      return current === name;
-    }).forEach(function() {
-      types.push('provider');
-    });
-
-    return types;
-  },
-  hasAny: function() {
-    return this.values.length +
-      this.constants.length +
-      this.factories.length +
-      this.services.length +
-      this.directives.length +
-      this.providers.length > 0;
-  }
-};
-
-function camelToDashed(camelCase) {
-  return camelCase.replace(/[A-Z]/g, function(match) {
-    return '-' + match.toLowerCase();
-  });
-}
-},{}]},{},[1])
-(1)
+},{"./lib/module-contents":1}]},{},[2])(2)
 });

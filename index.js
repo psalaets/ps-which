@@ -43,6 +43,7 @@ function hookIntoModule(moduleName, module) {
   recordNames('service',    index.services);
   recordNames('directive',  index.directives);
   recordNames('provider',   index.providers);
+  recordNames('controller', index.controllers);
 
   function recordNames(methodName, names) {
     var orig = module[methodName];
@@ -73,12 +74,13 @@ psWhich.report = function report(filter) {
     log('# ' + moduleName);
 
     if (moduleInfo.hasAny()) {
-      logSection('factory',   info[moduleName].factories);
-      logSection('value',     info[moduleName].values);
-      logSection('constant',  info[moduleName].constants);
-      logSection('service',   info[moduleName].services);
-      logSection('directive', info[moduleName].directives);
-      logSection('provider',  info[moduleName].providers);
+      logSection('factory',     info[moduleName].factories);
+      logSection('value',       info[moduleName].values);
+      logSection('constant',    info[moduleName].constants);
+      logSection('service',     info[moduleName].services);
+      logSection('directive',   info[moduleName].directives);
+      logSection('provider',    info[moduleName].providers);
+      logSection('controller',  info[moduleName].controllers);
     } else {
       log('(empty)');
     }

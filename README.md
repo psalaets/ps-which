@@ -54,6 +54,7 @@ Find out what `name` is and where it comes from.
 - service
 - directive (camelCasedName and dashed-name formats accepted)
 - provider
+- controller
 
 #### psWhich.report([filter])
 

@@ -101,4 +101,17 @@ describe('psWhich.info', function () {
     expect(psWhich.info.moduleL.providers).toEqual(['p1', 'p2']);
     expect(psWhich.info.moduleM.providers).toEqual(['p3']);
   });
+
+  it('lists controllers of each Angular module', function() {
+    angular.module('moduleN', []);
+    angular.module('moduleO', []);
+
+    angular.module('moduleN').provider('ctrl1', function() {});
+    angular.module('moduleN').provider('ctrl2', function() {});
+
+    angular.module('moduleO').provider('ctrl3', function() {});
+
+    expect(psWhich.info.moduleN.providers).toEqual(['ctrl1', 'ctrl2']);
+    expect(psWhich.info.moduleO.providers).toEqual(['ctrl3']);
+  });
 });
