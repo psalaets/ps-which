@@ -38,7 +38,7 @@ require('ps-which');
 
 ### 2. Load Angular app in browser and open dev console
 
-ps-which is accessed through the `psWhich` global variable.
+ps-which is always accessed through the `psWhich` global variable.
 
 In dev console:
 
