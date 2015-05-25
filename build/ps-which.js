@@ -78,7 +78,11 @@ function camelToDashed(camelCase) {
 },{}],2:[function(require,module,exports){
 var ModuleContents = require('./lib/module-contents');
 
+// export main func so browserify can do its umd thing
 module.exports = psWhich;
+
+// expose as global no matter the environment, this is how ps-which is accessed
+window.psWhich = psWhich;
 
 // automatically hook into angular if it's available as a global
 if (typeof angular != 'undefined') {
