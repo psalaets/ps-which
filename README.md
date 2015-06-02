@@ -53,7 +53,7 @@ Find out what `name` is and where it comes from.
 - factory
 - service
 - directive (camelCasedName and dashed-name formats accepted)
-- provider
+- provider (&lt;name&gt; and &lt;name&gt;Provider formats accepted)
 - controller
 
 #### psWhich.report([filter])

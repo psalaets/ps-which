@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0] - 2015-06-01
+### Added
+
+- `psWhich.ask()` will also match provider names with the "Provider" suffix
+
+Given this provider definition
+
+```js
+angular.module('app').provider('foo', provider);
+```
+
+Both `psWhich.ask('foo')` and `psWhich.ask('fooProvider')` will result in
+
+```js
+'provider in app'
+```
+
 ## [1.2.2] - 2015-05-25
 ### Fixed
 
