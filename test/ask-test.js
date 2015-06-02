@@ -99,4 +99,15 @@ describe('psWhich.ask()', function () {
 
     expect(answer).toBe('directive in moduleK');
   });
+
+  it('answers for existing provider with "Provider" suffix', function() {
+    function provider() { this.$get = function() { return 2; }; }
+    angular.module('moduleL', []);
+
+    angular.module('moduleL').provider('p2', provider);
+
+    var answer = psWhich.ask('p2Provider');
+
+    expect(answer).toBe('provider in moduleL');
+  });
 });

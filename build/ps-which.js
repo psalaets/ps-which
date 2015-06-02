@@ -46,7 +46,7 @@ ModuleContents.prototype = {
     });
 
     this.providers.filter(function(current) {
-      return current === name;
+      return current === name || current + 'Provider' === name;
     }).forEach(function() {
       types.push('provider');
     });
